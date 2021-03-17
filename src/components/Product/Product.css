@@ -1,0 +1,21 @@
+.pd-container{
+    display: flex;
+}
+.item-container{
+    margin: 10px;
+    padding: 15px;
+    border-bottom: 1px solid grey;
+}
+.item-container h3 {
+color: blue;
+}
+.btn-add{
+    background-color: magenta;
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: black;
+    font-size: large;
+    font-weight: 600;
+    cursor: pointer;
+}

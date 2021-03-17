@@ -1,0 +1,12 @@
+.review{
+    margin-left: 20px;
+    border-bottom: mediumpurple 2px solid;
+}
+.review-button{
+    background-color: goldenrod;
+    height: 50px;
+    width: 300px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: x-large;
+}
