@@ -8,9 +8,15 @@ import './Shop.css'
 
 
 const Shop = () => {
-    const firstTen = fakeData.slice(0,10);
-    const [products,setProducts] = useState(firstTen);
+    // const firstTen = fakeData.slice(0,10);
+    const [products,setProducts] = useState([]);
     const [cart,setCart] = useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/products')
+        .then(res =>res.json())
+        .then(data =>setProducts(data))
+    },[products])
         useEffect(()=>{
             const savedCart = getDatabaseCart()
             const productKeys = Object.keys(savedCart);
