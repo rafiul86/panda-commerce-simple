@@ -27,7 +27,6 @@ const Review = () => {
             })
             .then(res => res.json())
             .then(data => setCart(data))
-            console.log(productKeys)
         },[]);
         
     return (

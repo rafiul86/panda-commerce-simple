@@ -12,11 +12,14 @@ else {
   firebase.app(); 
 }
 function Login() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  const fbProvider = new firebase.auth.FacebookAuthProvider();
     const history = useHistory();
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/shipping" } };
    const [loggedInUser ,setLoggedInUser] = useContext(UserContext)
   const [newUser , setNewUser] = useState(false);
+  
   const [user,setUser] = useState({
     isSignedIn : false,
     name : '',
@@ -92,10 +95,40 @@ user.updateProfile({
   // An error happened.
 });
       }
-
-
+     const  handleGoogleSignIn =()=>{
+      firebase.auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        setLoggedInUser(user)
+        history.replace(from)
+      }).catch((error) => {
+        console.log(error)
+      });
+     }
+     const handleSignOut = () =>{
+      firebase.auth().signOut().then(() => {
+        
+      }).catch((error) => {
+        // An error happened.
+      });
+     }
+     const handleFbSignIn = () =>{
+      firebase
+      .auth()
+      .signInWithPopup(fbProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user)
+        setLoggedInUser(user)
+      }).catch((error) => {
+        
+      });
+     }
   return (
         <div className="App">
+          <h3>Congratulation : {loggedInUser.displayName}</h3>
+          
           <input type="checkbox" onChange = {()=> setNewUser(!newUser)} name ="newUser"/>
         <label htmlFor="newUser">New User Sign up</label>
       <form onSubmit = {handleSubmit}>
@@ -109,6 +142,10 @@ user.updateProfile({
       </form>
       <p style={{color : 'red'}}>{user.error}</p>
       {user.success && <p style={{color : 'green'}}>Congratulations !! User {newUser ? 'Created' : 'Logged in'} Successfully !!</p>}
+      <button style={{backgroundColor : "red"}} onClick={handleGoogleSignIn}>Google Sign In</button>
+      <button style={{backgroundColor : "blue"}} onClick={handleFbSignIn}>FacebookSign In</button>
+      <button style={{backgroundColor : "grey"}} onClick={handleSignOut}>SignOut</button>
+
     </div>
   );
 }

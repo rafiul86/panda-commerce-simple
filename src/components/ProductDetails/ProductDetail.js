@@ -5,13 +5,13 @@ import Product from '../Product/Product'
 const ProductDetail = () => {
     const {productKey} = useParams();
     const [product,setProduct] = useState({})
-    console.log(product,'product')
+   
     useEffect(()=>{
         fetch('http://damp-sands-03013.herokuapp.com/product/'+productKey)
         .then(res => res.json())
         .then(data =>setProduct(data))
     },[productKey])
-    console.log(product,'product', productKey)
+    
     return (
         <div>
             <Product showAddToCart = {false}  product = {product}></Product>

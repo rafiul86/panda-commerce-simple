@@ -7,9 +7,6 @@ const Shipment = () => {
     const [loggedInUser , setLoggedInUser] = useContext(UserContext)
     const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = data => console.log(data);
-
-  console.log(watch("example"));
-
   return (
     
     <form className ="ship-form" onSubmit={handleSubmit(onSubmit)}>
