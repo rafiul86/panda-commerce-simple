@@ -20,7 +20,7 @@ const Review = () => {
         useEffect(()=>{
            const savedCart = getDatabaseCart();
            const productKeys = Object.keys(savedCart);
-            fetch('http://localhost:5000/reviewProduct',{
+            fetch('http://damp-sands-03013.herokuapp.com/reviewProduct',{
                 method :'POST',
                 headers : {'Content-Type' : 'application/json'},
                 body : JSON.stringify(productKeys)
