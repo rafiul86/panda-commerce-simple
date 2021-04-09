@@ -5,7 +5,6 @@ import {GlobalContext} from '../Shipment/Shipment'
     
     const StylishPayment = () => {
         const handleOrderData = useContext(GlobalContext)
-        console.log(handleOrderData)
         const [paymentError , setPaymentError] = useState(null)
         const [paymentSuccess , setPaymentSuccess] = useState(null)
       const stripe = useStripe();

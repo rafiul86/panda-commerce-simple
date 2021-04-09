@@ -9,14 +9,15 @@ import './Shop.css'
 const Shop = () => {
     const [products,setProducts] = useState([]);
     const [cart,setCart] = useState([]);
-
+    const [search ,setSearch] = useState('')
     useEffect(()=>{
-        fetch('https://damp-sands-03013.herokuapp.com/products')
+        fetch('http://localhost:5000/products?search='+search)
         .then(res =>res.json())
         .then(data =>setProducts(data))
-    },[products])
+    },[search])
         useEffect(()=>{
-            const savedCart = getDatabaseCart()
+         const savedCart = getDatabaseCart()
+            console.log(savedCart)
             const productKeys = Object.keys(savedCart);
          if(products.length > 0){
             const  previousCart = productKeys.map(existingKey => {
@@ -46,10 +47,14 @@ const Shop = () => {
         setCart(newCart)
         addToDatabaseCart(product.key,count)
     }
-
+const handleSearch = (e) => {
+    setSearch(e.target.value)
+    console.log(search)
+}
         return (
         <div className = "shop-container">
             <div className = "product-container">
+                <input type="text" onBlur={handleSearch}/>
                 {
                     products.map(product => <Product showAddToCart = {true}
                       key = {product.key}  handleProduct = {handleProduct} product = {product}></Product>)

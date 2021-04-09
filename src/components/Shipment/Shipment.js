@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../App';
 import { getDatabaseCart } from '../../utilities/databaseManager';
@@ -17,8 +17,10 @@ const Shipment = () => {
   const onSubmit = data => {
     setShippingData(data)
   }
-  const handleOrderData = paymentId =>{
+  const  handleOrderData = (paymentId) =>{
     const savedCart = getDatabaseCart()
+    console.log(getDatabaseCart())
+    console.log(savedCart)
     const orderInfo = {...loggedInUser, 
       customerInfo : shippingData ,
       productInfo : savedCart,
