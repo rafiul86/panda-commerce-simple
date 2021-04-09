@@ -101,6 +101,7 @@ user.updateProfile({
       .then((result) => {
         const user = result.user;
         setLoggedInUser(user)
+        handleIdToken()
         history.replace(from)
       }).catch((error) => {
         console.log(error)
@@ -123,6 +124,13 @@ user.updateProfile({
         setLoggedInUser(user)
       }).catch((error) => {
         
+      });
+     }
+     const handleIdToken = () =>{
+      firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        sessionStorage.setItem('token' , idToken)
+      }).catch(function(error) {
+        // Handle error
       });
      }
   return (

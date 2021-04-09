@@ -1,7 +1,7 @@
 
 .ship-form{
     margin : 30px 100px;
-    background-color: royalblue;
+    background-color:slateblue;
 }
 
 .ship-form input{
@@ -10,7 +10,7 @@
     padding: 5px;
     border: 10x solid gray;
     border-radius: 5px;
-    width: 300px;
+    width: 440px;
 }
 .error{
     color: red;

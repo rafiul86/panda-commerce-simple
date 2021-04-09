@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../App';
 import { getDatabaseCart } from '../../utilities/databaseManager';
-import shipment from './Shipment.css'
+import shipment from './Shipment.css';
+import {CardElement} from '@stripe/react-stripe-js';
+import PaymentProcess from '../PaymentProcess/PaymentProcess';
 
 const Shipment = () => {
     const [loggedInUser , setLoggedInUser] = useContext(UserContext)
@@ -18,8 +20,9 @@ const Shipment = () => {
   }
   return (
     
-    <form className ="ship-form" onSubmit={handleSubmit(onSubmit)}>
-      <input name="title"  placeholder="title" defaultValue="test" ref={register} />
+    <div className="row" >
+      <div className="col-md-6">   <form className ="ship-form" onSubmit={handleSubmit(onSubmit)}>
+      <input name="title"  placeholder="title"  ref={register} />
       {errors.exampleRequired && <span className="error">This field is required</span>}
       <input name="name" placeholder="name" defaultValue={loggedInUser.name} ref={register({ required: true })} />
       {errors.name && <span className="error">This field is required</span>}
@@ -34,7 +37,13 @@ const Shipment = () => {
       <input name="email" defaultValue={loggedInUser.email} placeholder="email" ref={register({ required: true })} />
       {errors.email && <span className="error">This field is required</span>}
       <input type="submit" />
-    </form>
+    </form></div>
+      <div className="col-md-3  text-primary mt-5">
+       
+        <h3>VISA/MasterCard Accepted</h3>
+        <PaymentProcess></PaymentProcess>
+      </div>
+    </div>
   );
 };
 
