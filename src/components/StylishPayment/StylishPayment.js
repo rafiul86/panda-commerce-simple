@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
+import {GlobalContext} from '../Shipment/Shipment'
 
     import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
-
+    
     const StylishPayment = () => {
+        const handleOrderData = useContext(GlobalContext)
+        console.log(handleOrderData)
         const [paymentError , setPaymentError] = useState(null)
         const [paymentSuccess , setPaymentSuccess] = useState(null)
       const stripe = useStripe();
@@ -36,6 +38,7 @@ import React, { useState } from 'react';
         } else {
             setPaymentSuccess(paymentMethod.id)
             setPaymentError(null)
+            handleOrderData(paymentMethod.id)
         }
       };
     
