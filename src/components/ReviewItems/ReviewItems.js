@@ -3,6 +3,7 @@ import './ReviewItems.css'
 
 const ReviewItems = (props) => {
     const {name,quantity,price,key} = props.product ;
+    console.log(props)
     return (
       <div className = "final-review">
           <h4>Price : {price}</h4>
