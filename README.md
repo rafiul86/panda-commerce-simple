@@ -20,7 +20,7 @@
 __Beside this you may find it better in many other ways__
 
 
-This is the website [https://login-form-6274e.web.app/](https://login-form-6274e.web.app/) to view it in the browser.
+This is the website [https://e-commerce-94a37.web.app/](https://e-commerce-94a37.web.app/) to view it in the browser.
 
 
 
@@ -32,4 +32,4 @@ This is the website [https://login-form-6274e.web.app/](https://login-form-6274e
 
 
 ```
-## Tech used: React, React-Router, Hooks, Context API, Google Map, MongoDB, Heroku, Google Firebase, Material UI and Redux.js
+## Tech used: React, React-Router, Hooks, Context API, Google Map, MongoDB, Heroku, Google Firebase, Material UI and Redux.js and Stripe as payment method.
