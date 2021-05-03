@@ -4,7 +4,7 @@ import fakeData from '../../fakeData';
 
 const Inventory = () => {
     const handleProducts = () =>{
-        fetch('http://localhost:https://damp-sands-03013.herokuapp.com/addProducts',{
+        fetch('https://damp-sands-03013.herokuapp.com/addProducts',{
             method : 'POST',
             headers : {'Content-Type' : 'application/json'},
             body : JSON.stringify(fakeData)
